@@ -144,7 +144,7 @@ then
 	echo_bsdinit_stamp >> $LOADER_CONF
 	echo 'console="vidconsole"' >> $LOADER_CONF
 	echo 'autoboot_delay="1"' >> $LOADER_CONF
-	sed -i '' 's/ttyd0  \"/usr/libexec/getty std.9600\"   dialup  off secure/ttyd0   \"/usr/libexec/getty std.9600\"   vt100   on secure/' /etc/ttys
+	sed -i '' 's/dcons   "/usr/libexec/getty std.9600"   vt100   off secure/dcons   "/usr/libexec/getty std.9600"   vt100   on secure/' /etc/ttys
 fi
 # Enabel sshd in rc.conf
 if ! /usr/bin/egrep '^sshd_enable' $RC_CONF > /dev/null
