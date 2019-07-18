@@ -72,7 +72,7 @@ FETCH="fetch ${VERIFY_PEER}"
 INSTALL_PKGS='
 	security/sudo
 	security/ca_root_nss
-	devel/py36-pip
+	py36-pip
 '
 
 ##############################################
@@ -138,11 +138,12 @@ if ! /usr/bin/egrep '^cloudinit_enable="YES"' $RC_CONF > /dev/null
 then
 echo 'cloudinit_enable="YES"' >> $RC_CONF
 fi
-if ! /usr/bin/egrep '^console="vidconsole,comconsole"' $LOADER_CONF > /dev/null
+if ! /usr/bin/egrep '^console="vidconsole"' $LOADER_CONF > /dev/null
 then
 	echo_bsdinit_stamp >> $LOADER_CONF
-	echo 'console="vidconsole,comconsole"' >> $LOADER_CONF
+	echo 'console="vidconsole"' >> $LOADER_CONF
 	echo 'autoboot_delay="1"' >> $LOADER_CONF
+	sed -i '' 's/ttyd0  "/usr/libexec/getty std.9600"   dialup  off secure/ttyd0   "/usr/libexec/getty std.9600"   vt100   on secure/' /etc/ttys
 fi
 # Enabel sshd in rc.conf
 if ! /usr/bin/egrep '^sshd_enable' $RC_CONF > /dev/null
