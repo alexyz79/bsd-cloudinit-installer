@@ -64,7 +64,7 @@ BSDINIT_DIR="$WORKING_DIR/bsd-cloudinit"
 VENV_DIR="$BSDINIT_DIR/.venv"
 
 # bsd cloudinit
-BSDINIT_URL="https://api.github.com/repos/alexyz79/bsd-cloudinit/tarball/$GIT_REF"
+BSDINIT_URL="https://api.github.com/repos/cloud-init/cloud-init/tarball/$GIT_REF"
 
 # commands
 VERIFY_PEER='--ca-cert=/usr/local/share/certs/ca-root-nss.crt'
